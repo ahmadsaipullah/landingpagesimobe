@@ -1,7 +1,11 @@
 import type { Config } from "@react-router/dev/config";
 
 export default {
-  // Config options...
-  // Server-side render by default, to enable SPA mode set this to `false`
-  ssr: true,
+  // SPA mode for cPanel hosting (static files only)
+  ssr: false,
+
+  // Pre-render the home page for SEO
+  async prerender() {
+    return ["/"];
+  },
 } satisfies Config;
