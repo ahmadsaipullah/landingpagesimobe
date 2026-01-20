@@ -134,6 +134,16 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.hero-title .brand-name {
+  font-size: 3.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  letter-spacing: -0.02em;
+}
+
 .hero-title span {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
