@@ -1,0 +1,48 @@
+---
+import { benefits } from '../data/landing-data.js';
+---
+
+<section class="benefits-section" id="benefits" aria-labelledby="benefits-title">
+  <div class="container">
+    <header class="section-header" data-aos="fade-up">
+      <h2 id="benefits-title" class="section-title">
+        Mengapa <span>SIMOBE</span>?
+      </h2>
+      <p class="section-subtitle">
+        Keunggulan yang membuat SIMOBE menjadi pilihan terbaik untuk manajemen OBE
+      </p>
+    </header>
+    
+    <div class="benefits-grid">
+      {benefits.map((benefit, index) => (
+        <article class="benefit-item">
+          <div class="benefit-icon" aria-hidden="true">
+            <i class={benefit.icon}></i>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">{benefit.title}</h3>
+            <p class="benefit-desc">{benefit.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .benefits-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

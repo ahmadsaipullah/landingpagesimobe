@@ -1,0 +1,86 @@
+---
+// Hero section - Static Astro component for maximum SEO
+---
+
+<section class="hero-section" id="hero">
+  <div class="container">
+    <div class="hero-row">
+      <div class="hero-content-col">
+        <div class="hero-content" data-aos="fade-right">
+          <h1 class="hero-title">
+            Sistem Informasi<br />
+            Manajemen <span>OBE</span>
+          </h1>
+          <p class="hero-subtitle">
+            Kelola kurikulum berbasis Outcome-Based Education dengan mudah dan
+            terintegrasi. Petakan capaian pembelajaran, kelola penilaian, dan
+            pantau ketercapaian CPL secara real-time.
+          </p>
+          <p class="hero-attribution">
+            Dikembangkan oleh <a
+              href="https://dalova.co.id/"
+              target="_blank"
+              rel="noopener">DALOVA IT SOLUSI</a>
+          </p>
+          <div class="hero-buttons">
+            <a href="#cta" class="btn-primary-landing">
+              <i class="fas fa-envelope"></i> Hubungi Kami
+            </a>
+            <a
+              href="#"
+              class="btn-secondary-landing btn-coming-soon"
+              onclick="event.preventDefault();"
+            >
+              <i class="fas fa-sign-in-alt"></i> Login Demo
+              <span class="badge-coming-soon">Coming Soon</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-col" data-aos="fade-left" data-aos-delay="200">
+        <img
+          src="/img/hero.webp"
+          alt="SIMOBE - Sistem Informasi Manajemen OBE Dashboard"
+          class="hero-image"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 -0.5rem;
+  }
+  .hero-content-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+  }
+  .hero-image-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  @media (max-width: 991px) {
+    .hero-row {
+      flex-direction: column-reverse;
+    }
+    .hero-content-col,
+    .hero-image-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+      text-align: center;
+    }
+    .hero-image-col {
+      margin-bottom: 2rem;
+    }
+  }
+</style>

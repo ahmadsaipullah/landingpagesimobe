@@ -1,0 +1,162 @@
+---
+import { workflowSteps } from "../data/landing-data.js";
+
+// Split into first row (1-3) and second row (4-6) for arrow placement
+const firstRow = workflowSteps.slice(0, 3);
+const secondRow = workflowSteps.slice(3);
+---
+
+<section
+  class="workflow-section"
+  id="workflow"
+  aria-labelledby="workflow-title"
+>
+  <div class="container">
+    <header class="section-header" data-aos="fade-up">
+      <h2 id="workflow-title" class="section-title">
+        Alur <span>OBE</span>
+      </h2>
+      <p class="section-subtitle">
+        Pahami alur implementasi Outcome-Based Education dari Profil Lulusan
+        hingga Assessment
+      </p>
+    </header>
+
+    <!-- First Row (Steps 1-3) -->
+    <div class="workflow-grid">
+      {
+        firstRow.map((step, index) => (
+          <article
+            class="workflow-card"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div class="workflow-step">{step.step}</div>
+            <div class="workflow-image-wrapper">
+              <img
+                src={`/img/${step.image}`}
+                alt={`SIMOBE ${step.title} - ${step.description}`}
+                class="workflow-image"
+                width="350"
+                height="200"
+                loading="lazy"
+              />
+            </div>
+            <div class="workflow-content">
+              <span class="workflow-badge">{step.badge}</span>
+              <h3 class="workflow-card-title">{step.title}</h3>
+              <p class="workflow-card-desc">{step.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Down Arrow Connector -->
+    <div class="workflow-arrow" data-aos="fade-up">
+      <i class="fas fa-arrow-down"></i>
+    </div>
+
+    <!-- Second Row (Steps 4-6) -->
+    <div class="workflow-grid">
+      {
+        secondRow.map((step, index) => (
+          <article
+            class={`workflow-card ${step.badgeClass === "success" ? "workflow-card-final" : ""}`}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <div
+              class={`workflow-step ${step.badgeClass === "success" ? "workflow-step-final" : ""}`}
+            >
+              {step.badgeClass === "success" ? (
+                <i class="fas fa-check" />
+              ) : (
+                step.step
+              )}
+            </div>
+            <div class="workflow-image-wrapper">
+              <img
+                src={`/img/${step.image}`}
+                alt={`SIMOBE ${step.title} - ${step.description}`}
+                class="workflow-image"
+                width="350"
+                height="200"
+                loading="lazy"
+              />
+            </div>
+            <div class="workflow-content">
+              <span
+                class={`workflow-badge ${step.badgeClass === "success" ? "workflow-badge-success" : ""}`}
+              >
+                {step.badge}
+              </span>
+              <h3 class="workflow-card-title">{step.title}</h3>
+              <p class="workflow-card-desc">{step.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  .workflow-arrow {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  .workflow-arrow i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .workflow-card-final {
+    border: 2px solid #10b981 !important;
+  }
+
+  .workflow-step-final {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  }
+
+  .workflow-badge-success {
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: #10b981 !important;
+  }
+
+  @media (min-width: 768px) {
+    .workflow-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .workflow-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import { navLinks } from "../data/landing-data.js";
+---
+
+<nav class="navbar-landing" id="navbar">
+  <div class="container">
+    <a href="/" class="navbar-brand">
+      <img
+        src="/img/simobe-transparant.png"
+        alt="SIMOBE Logo"
+        class="logo-simobe"
+      />
+      SIM<span>OBE</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      id="navToggler"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="navbar-collapse" id="navMenu">
+      <ul class="navbar-nav">
+        {
+          navLinks.map((link) => (
+            <li class="nav-item">
+              <a href={link.href} class="nav-link">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="navbar-actions">
+        <a
+          href="#"
+          class="btn-login btn-coming-soon"
+          onclick="event.preventDefault();"
+        >
+          <i class="fas fa-sign-in-alt"></i> Login Demo
+          <span class="badge-coming-soon">Coming Soon</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggler = document.getElementById("navToggler");
+    const menu = document.getElementById("navMenu");
+
+    if (toggler && menu) {
+      toggler.addEventListener("click", () => {
+        menu.classList.toggle("show");
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (href && href !== "#") {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const offset = 70;
+            const position =
+              target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: position, behavior: "smooth" });
+            menu?.classList.remove("show");
+          }
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", () => {
+      const navbar = document.getElementById("navbar");
+      if (navbar) {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .nav-link {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-underline-offset: unset !important;
+  }
+
+  .nav-link:hover {
+    text-decoration: none !important;
+  }
+
+  .navbar-brand {
+    text-decoration: none !important;
+  }
+</style>

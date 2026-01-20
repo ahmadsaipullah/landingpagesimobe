@@ -1,0 +1,17 @@
+# SIMOBE - Sistem Informasi Manajemen OBE
+# https://simobe.dalova.co.id
+
+User-agent: *
+Allow: /
+
+# Disallow admin/internal paths
+Disallow: /admin
+Disallow: /api
+Disallow: /login
+Disallow: /logout
+
+# Sitemap
+Sitemap: https://simobe.dalova.co.id/sitemap.xml
+
+# Crawl-delay (optional, for polite bots)
+Crawl-delay: 1

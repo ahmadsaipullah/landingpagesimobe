@@ -1,0 +1,58 @@
+---
+import { features } from '../data/landing-data.js';
+---
+
+<section class="features-section" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <header class="section-header" data-aos="fade-up">
+      <h2 id="features-title" class="section-title">
+        Fitur <span>Unggulan</span>
+      </h2>
+      <p class="section-subtitle">
+        SIMOBE menyediakan berbagai fitur untuk membantu pengelolaan kurikulum OBE secara efektif dan efisien
+      </p>
+    </header>
+    
+    <div class="features-grid">
+      {features.map((feature, index) => (
+        <article class="feature-card" data-aos="fade-up" data-aos-delay={index * 100}>
+          <div class="feature-image-wrapper">
+            <img 
+              src={`/img/${feature.image}`}
+              alt={`SIMOBE ${feature.title} - ${feature.description}`}
+              class="feature-image"
+              width="400"
+              height="250"
+              loading="lazy"
+            />
+          </div>
+          <div class="feature-content">
+            <div class="feature-icon" aria-hidden="true">
+              <i class={feature.icon}></i>
+            </div>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-desc">{feature.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,244 @@
+---
+// SEO Configuration for SIMOBE
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const SITE_URL = "https://simobe.dalova.co.id";
+const SITE_NAME = "SIMOBE";
+
+const {
+  title = "SIMOBE - Sistem Informasi Manajemen OBE | DALOVA IT SOLUSI",
+  description = "SIMOBE adalah Sistem Informasi Manajemen Outcome-Based Education untuk perguruan tinggi Indonesia. Kelola kurikulum berbasis OBE, petakan capaian pembelajaran, dan pantau ketercapaian CPL secara real-time. Dikembangkan oleh DALOVA IT SOLUSI.",
+  keywords = "SIMOBE, SIMOBE DALOVA, SIMOBE Dalova IT Solusi, OBE, Outcome Based Education, CPL, CPMK, kurikulum OBE, perguruan tinggi, sistem informasi akademik, akreditasi BAN-PT",
+  image = "/img/og-image.png",
+  canonical = SITE_URL,
+} = Astro.props as Props;
+
+// JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      description: description,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "id-ID",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/?s={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "DALOVA IT SOLUSI",
+      legalName: "DALOVA IT SOLUSI",
+      url: "https://dalova.co.id/",
+      description: "IT Konsultan dan Software Development",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/img/simobe-transparant.png`,
+        width: 200,
+        height: 200,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+62-21-1234-5678",
+        contactType: "customer service",
+        areaServed: "ID",
+        availableLanguage: "Indonesian",
+      },
+      sameAs: [
+        "https://facebook.com/simobe",
+        "https://instagram.com/simobe",
+        "https://linkedin.com/company/dalova",
+      ],
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${SITE_URL}/#software`,
+      name: "SIMOBE",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web Browser",
+      description:
+        "Sistem Informasi Manajemen Outcome-Based Education untuk perguruan tinggi Indonesia",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "IDR",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Apa itu SIMOBE?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SIMOBE adalah Sistem Informasi Manajemen Outcome-Based Education yang membantu institusi pendidikan tinggi dalam mengelola kurikulum berbasis OBE, termasuk pemetaan CPL, CPMK, dan pengukuran ketercapaian pembelajaran.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Apakah SIMOBE mendukung multi-tenant?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Ya, SIMOBE dirancang dengan arsitektur multi-tenant sehingga satu instalasi sistem dapat digunakan oleh banyak fakultas dan program studi dengan isolasi data yang aman.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Bagaimana cara mengimpor data yang sudah ada?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "SIMOBE menyediakan fitur import Excel untuk berbagai jenis data seperti mahasiswa, dosen, mata kuliah, CPL, dan lainnya. Template Excel tersedia untuk memudahkan proses migrasi data.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Apakah SIMOBE membantu akreditasi BAN-PT?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Ya, SIMOBE membantu memenuhi standar akreditasi BAN-PT dengan dokumentasi kurikulum OBE yang lengkap, pemetaan CPL-PL, dan laporan ketercapaian pembelajaran yang terstruktur.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${SITE_URL}/#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Beranda",
+          item: SITE_URL,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="DALOVA IT SOLUSI" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="language" content="Indonesian" />
+    <meta name="revisit-after" content="3 days" />
+    <meta name="generator" content="Astro" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={SITE_URL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${SITE_URL}${image}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="SIMOBE - Sistem Informasi Manajemen OBE"
+    />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={SITE_URL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${SITE_URL}${image}`} />
+    <meta
+      name="twitter:image:alt"
+      content="SIMOBE - Sistem Informasi Manajemen OBE"
+    />
+
+    <!-- Theme & Brand -->
+    <meta name="theme-color" content="#6366f1" />
+    <meta name="msapplication-TileColor" content="#6366f1" />
+    <meta name="application-name" content={SITE_NAME} />
+    <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="ID" />
+    <meta name="geo.placename" content="Indonesia" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/simobe-transparant.png" />
+    <link rel="apple-touch-icon" href="/img/simobe-transparant.png" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts with font-display swap for performance -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+
+    <!-- AOS Animation Script -->
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof AOS !== "undefined") {
+          AOS.init({
+            duration: 800,
+            easing: "ease-out",
+            once: true,
+            offset: 50,
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

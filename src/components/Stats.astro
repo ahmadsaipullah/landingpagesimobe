@@ -1,0 +1,37 @@
+---
+// Stats Section - SIMOBE Key Metrics
+import { stats } from '../data/landing-data.js';
+---
+
+<section class="stats-section" id="stats" aria-label="SIMOBE Statistics">
+  <div class="container">
+    <div class="stats-grid" data-aos="fade-up">
+      {stats.map((stat, index) => (
+        <div class="stat-item">
+          <div class="stat-icon" aria-hidden="true">
+            <i class={stat.icon}></i>
+          </div>
+          <div class="stat-value">{stat.value}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stat-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+</style>
